@@ -4,12 +4,15 @@ const Db = class {
     }
 
     findByName(query) {
-        return this.data
-        return this.data.filter(item => {
-            if (item.Fr) {
-                return this._slugify(item.Fr) === this._slugify(query)
-            }
-        })
+        if (query) {
+            return this.data.filter(item => {
+                if (item.Fr) {
+                    return this._slugify(item.Fr) === this._slugify(query)
+                }
+            })
+        } else {
+            return this.data
+        }
     }
 
     find() {

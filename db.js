@@ -4,6 +4,7 @@ const Db = class {
     }
 
     findByName(query) {
+        return this.data
         return this.data.filter(item => {
             if (item.Fr) {
                 return this._slugify(item.Fr) === this._slugify(query)

@@ -5,7 +5,12 @@ const insertImg = (fields, collection = ImgsDb) =>
 
 const getFileNames = () =>
     Array.from(Array(27).keys()).map(
-        img => `img/thumb-${img+1}.jpg`
+        img => {
+            return {
+                img: `img/img-${img+1}.jpg`,
+                thumbnail: `img/thumb-${img+1}.jpg`
+            }
+        }
     )
 
 const extractFieldsFromKeywords = (keywords) => {
@@ -16,7 +21,7 @@ const extractFieldsFromKeywords = (keywords) => {
             fields.keyword.push(keyword)
         } else {
             let field = keyword.split(':')
-            fields[field[0]] = field[1].trim()
+            fields[field[0]] = decodeURIComponent(escape(field[1].trim()))
         }
     })
     return fields
@@ -42,7 +47,7 @@ const convertExifToFields = (exifData) => {
 
 const readAndSaveImgsMetas = (fileNames, collection = ImgsDb) =>
     fileNames.map(fileName => {
-        fetch(fileName).then(
+        fetch(fileName.thumbnail).then(
             response => response.blob()
         ).then(blob => {
             saveRecord(fileName, blob)

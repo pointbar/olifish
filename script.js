@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", event => {
 
-    const imgs = Array.from(Array(28).keys())
+    const imgs = Array.from(Array(27).keys())
     imgsDB = []
 
     imgs.map(img => {
-        let imgName = `img/thumb-${img}.jpg`
+        let imgName = `img/thumb-${img+1}.jpg`
 
         fetch(imgName).then(
             response => response.blob()

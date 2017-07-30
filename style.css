@@ -2,6 +2,10 @@ body {
     background: grey;
 }
 
-img {
-    width: 20%;
+section {
+    display: flex;
+}
+
+article {
+    padding: 1em;
 }

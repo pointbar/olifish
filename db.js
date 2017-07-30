@@ -3,10 +3,16 @@ const Db = class {
         this.data = []
     }
 
-    findByLocation(location) {
-        return this.data.filter(item =>
-            this._slugify(item.location) === this._slugify(location)
-        )
+    findByName(query) {
+        return this.data.filter(item => {
+            if (item.Fr) {
+                return this._slugify(item.Fr) === this._slugify(query)
+            }
+        })
+    }
+
+    find() {
+        return this.data
     }
 
     insert(meta) {

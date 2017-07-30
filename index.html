@@ -1,6 +1,12 @@
+<script src="db.js"></script>
 <script type=text/javascript src=modules/exif-js/exif.js></script>
 <script src=script.js></script>
 <link rel=stylesheet href=style.css>
 <meta charset=utf-8>
 
 <a href=#lanzarote id=search>Lanzarote</a>
+
+<script>
+    readAndSaveImgsMetas(getFileNames())
+    console.table(ImgsDb.findByLocation('lanzarôte'))
+</script>

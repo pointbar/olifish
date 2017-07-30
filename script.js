@@ -1,22 +1,50 @@
-document.addEventListener("DOMContentLoaded", event => {
+ImgsDb = new Db()
 
-    const imgs = Array.from(Array(27).keys())
-    imgsDB = []
+const insertImg = (fields, collection = ImgsDb) =>
+    collection.insert(fields)
 
-    imgs.map(img => {
-        let imgName = `img/thumb-${img+1}.jpg`
+const getFileNames = () =>
+    Array.from(Array(27).keys()).map(
+        img => `img/thumb-${img+1}.jpg`
+    )
 
-        fetch(imgName).then(
+const extractFieldsFromKeywords = (keywords) => {
+    const fields = {}
+    fields.keyword = []
+    keywords.forEach(keyword => {
+        if (!keyword.match(/\w*:/)) {
+            fields.keyword.push(keyword)
+        } else {
+            let field = keyword.split(':')
+            fields[field[0]] = field[1].trim()
+        }
+    })
+    return fields
+}
+
+const saveRecord = (fileName, blob) => {
+    EXIF.getData(blob, function() {
+        const fields = convertExifToFields(this)
+        fields.fileName = fileName
+        insertImg(fields)
+    })
+}
+
+const convertExifToFields = (exifData) => {
+    const exifKeywords = EXIF.getIptcTag(exifData, 'keywords') || []
+    const fields = extractFieldsFromKeywords(exifKeywords)
+    fields.dateCreated = EXIF.getIptcTag(exifData, 'dateCreated') || new Date('01/01/2010')
+    fields.location = EXIF.getIptcTag(exifData, 'caption') || ''
+    fields.model = EXIF.getTag(exifData, 'Model') || []
+    return fields
+}
+
+
+const readAndSaveImgsMetas = (fileNames, collection = ImgsDb) =>
+    fileNames.map(fileName => {
+        fetch(fileName).then(
             response => response.blob()
-        ).then(myBlob => {
-            EXIF.getData(myBlob, function() {
-                const location = EXIF.getIptcTag(this, "caption")
-                const keywords = EXIF.getIptcTag(this, "keywords")
-                const imgName = img
-                imgsDB.push({ imgName: imgName, location: location, keywords: keywords })
-            })
+        ).then(blob => {
+            saveRecord(fileName, blob)
         })
     })
-
-
-})

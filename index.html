@@ -1,5 +1,5 @@
 <script src=db.js></script>
-<script type=text/javascript src=modules/exif-js/exif.js></script>
+<script src=modules/exif-js/exif.js></script>
 <script src=script.js></script>
 <link rel=stylesheet href=style.css>
 <meta charset=utf-8>
@@ -18,6 +18,8 @@
         <a>
             <img>
         </a>
+        <p class=nom></p>
+        <p class=latin></p>
     </article>
 </template>
 
@@ -34,8 +36,15 @@
         const area = document.querySelector('.imgs')
         const tpl = document.querySelector('#img')
         imgsSelect.map(item => {
-            let img = tpl.content.querySelector("img")
-            img.src = item.fileName
+            let a = tpl.content.querySelector('a')
+            a.href = item.fileName.img
+            let img = tpl.content.querySelector('img')
+            img.src = item.fileName.thumbnail
+            img.title = item.Lat
+            let pLatin = tpl.content.querySelector('p.latin')
+            let pFr = tpl.content.querySelector('p.nom')
+            pLatin.innerText = item.Lat
+            pFr.innerText = item.Fr
             let clone = document.importNode(tpl.content, true)
             area.appendChild(clone)
         })

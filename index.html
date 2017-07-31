@@ -35,6 +35,7 @@
     const displayImgs = (imgsSelect) => {
         const area = document.querySelector('.imgs')
         const tpl = document.querySelector('#img')
+        area.innerHTML = ''
         imgsSelect.map(item => {
             let a = tpl.content.querySelector('a')
             a.href = item.fileName.img

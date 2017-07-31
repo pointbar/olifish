@@ -4,7 +4,7 @@ const insertImg = (fields, collection = ImgsDb) =>
     collection.insert(fields)
 
 const getFileNames = () =>
-    Array.from(Array(27).keys()).map(
+    Array.from(Array(IMGS_COUNT).keys()).map(
         img => {
             return {
                 img: `img/img-${img+1}.jpg`,

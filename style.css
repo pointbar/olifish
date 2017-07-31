@@ -6,6 +6,9 @@ body {
 }
 
 header {
+    position: fixed;
+    width: 70%;
+    min-width: 25em;
     padding: 0 2em;
     border-bottom: 1px solid #eeeff2;
     background: #fff;
@@ -20,11 +23,14 @@ header h1 {
 }
 
 header p {
-    line-height: 3em;
+    color: #ccc;
+    font-style: italic;
+    font-size: .7em;
+    line-height: 4.5em;
 }
 
 header input {
-    margin: .7em;
+    margin: 1em;
     border-radius: 25px;
     background: #f7f8fa;
     color: #222;
@@ -38,6 +44,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-top: 3em;
 }
 
 img {

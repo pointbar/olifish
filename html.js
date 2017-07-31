@@ -1,6 +1,7 @@
   document.addEventListener("DOMContentLoaded", function(event) {
       const form = document.querySelector('form')
       form.onsubmit = (event) => {
+          event.preventDefault()
           const query = document.querySelector('input').value
           const imgsSelect = ImgsDb.findByName(query)
           displayImgs(imgsSelect)

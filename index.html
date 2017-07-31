@@ -1,18 +1,19 @@
 <script src=db.js></script>
 <script src=html.js></script>
-<script src=modules/exif-js/exif.js></script>
 <script src=script.js></script>
+
+<script src=modules/jquery/dist/jquery.min.js></script>
+<script src=modules/exif-js/exif.js></script>
+<script src=modules/@fancyapps/fancybox/dist//jquery.fancybox.min.js></script>
+
+<link rel=stylesheet href=modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css>
+
 <link rel=stylesheet href=style.css>
-
-<script src=https://code.jquery.com/jquery-3.2.1.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js></script>
-
 <meta charset=utf-8>
 
 <header>
     <h1>Olifish</h1>
-    <form action=#>
+    <form action=/ method=get>
         <input type=text placeholder="Recherche">
     </form>
     <p>Olivier Colli</p>
@@ -24,7 +25,7 @@
 
 <template id=img>
     <article>
-        <a data-fancybox=gallery>
+        <a data-fancybox=image>
             <img>
         </a>
         <p class=nom></p>

@@ -8,8 +8,7 @@ const Db = class {
             return this.data
         }
         return this.data.filter(item => {
-            const name = item.Fr || ''
-            return this._slugify(name).indexOf(this._slugify(query)) !== -1
+            return this._slugify(JSON.stringify(item)).indexOf(this._slugify(query)) !== -1
         })
     }
 

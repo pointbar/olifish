@@ -1,6 +1,6 @@
   document.addEventListener("DOMContentLoaded", function(event) {
-      const button = document.querySelector('button')
-      button.onclick = (event) => {
+      const form = document.querySelector('form')
+      form.onsubmit = (event) => {
           const query = document.querySelector('input').value
           const imgsSelect = ImgsDb.findByName(query)
           displayImgs(imgsSelect)

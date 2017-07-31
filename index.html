@@ -1,30 +1,45 @@
 <script src=db.js></script>
 <script src=html.js></script>
-<script src=modules/exif-js/exif.js></script>
 <script src=script.js></script>
+
+<script src=modules/jquery/dist/jquery.min.js></script>
+<script src=modules/exif-js/exif.js></script>
+<script src=modules/@fancyapps/fancybox/dist//jquery.fancybox.min.js></script>
+
+<link rel=stylesheet href=modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css>
+
 <link rel=stylesheet href=style.css>
-
-<script src=https://code.jquery.com/jquery-3.2.1.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js></script>
-
 <meta charset=utf-8>
 
 <header>
-    <h1>Olifish</h1>
-    <form action=#>
+    <h1><a href="/">Olifish</a></h1>
+    <form action=/ method=get>
         <input type=text placeholder="Recherche">
     </form>
     <p>Olivier Colli</p>
 </header>
 
 <section class=imgs>
-
+    <article class=home>
+        <h1>Hi, I'm Olivier! </h1>
+        <p>Olivier Colli is my full name and people often call me Olifish.</p>
+        <p>Welcome to my photo portfolio, I am an amateur enthusiast photographer with a keen interest towords wildlife, nature and diving photography.</p>
+        <p>I want to showcase my work to the world and would love to see my shots used in various places as needed.</p>
+        <p>I shoot and then break it down and enhance it with lightroom to create varied, highly satured images.</p>
+        <p>Have fun with my raw stuff!</p>
+        <h2>Some examples:</h2>
+        <ul>
+            <li><a href=# class=gallery>Lanzarote</a></li>
+            <li><a href=# class=gallery>Mexique</a></li>
+            <li><a href=# class=gallery>Égypte</a></li>
+            <li><a href=# class=gallery>Museo</a></li>
+        </ul>
+    </article>
 </section>
 
 <template id=img>
-    <article>
-        <a data-fancybox=gallery>
+    <article class=img>
+        <a data-fancybox=image data-caption>
             <img>
         </a>
         <p class=nom></p>

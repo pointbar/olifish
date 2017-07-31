@@ -15,9 +15,10 @@
       imgsSelect.map(item => {
           let a = tpl.content.querySelector('a')
           a.href = item.fileName.img
+          a.setAttribute('data-caption', `${item.Fr} - <i>${item.Lat}</i>`)
           let img = tpl.content.querySelector('img')
           img.src = item.fileName.thumbnail
-          img.title = item.Lat
+          img.title = item.model
           let pLatin = tpl.content.querySelector('p.latin')
           let pFr = tpl.content.querySelector('p.nom')
           pLatin.innerText = item.Lat

@@ -1,0 +1,1 @@
+IMGS_COUNT = 27

@@ -5,14 +5,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     form.onsubmit = (event) => {
         event.preventDefault()
         const query = document.querySelector('input').value
-        const imgsSelect = ImgsDb.findByName(query)
+        const imgsSelect = ImgsDb.find(query)
         displayImgs(imgsSelect)
     }
 
     Array.from(aGaleries).map(a =>
         a.onclick = (event) => {
             const query = event.target.innerText
-            const imgsSelect = ImgsDb.findByName(query)
+            const imgsSelect = ImgsDb.find(query)
             displayImgs(imgsSelect)
         }
     )

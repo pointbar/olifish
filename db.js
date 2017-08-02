@@ -3,17 +3,13 @@ const Db = class {
         this.data = []
     }
 
-    findByName(query) {
+    find(query) {
         if (!query) {
             return this.data
         }
         return this.data.filter(item => {
             return this._slugify(JSON.stringify(item)).indexOf(this._slugify(query)) !== -1
         })
-    }
-
-    find() {
-        return this.data
     }
 
     insert(meta) {

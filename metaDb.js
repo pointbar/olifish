@@ -36,7 +36,13 @@ const saveRecord = (fileName, blob) => {
 }
 
 const convertExifToFields = (exifData) => {
-    const exifKeywords = EXIF.getIptcTag(exifData, 'keywords') || []
+    const exifKeywords = function() {
+        if (typeof EXIF.getIptcTag(exifData, 'keywords') === 'string') {
+            return [EXIF.getIptcTag(exifData, 'keywords')]
+        } else {
+            return EXIF.getIptcTag(exifData, 'keywords') || []
+        }
+    }()
     const fields = extractFieldsFromKeywords(exifKeywords)
     fields.dateCreated = EXIF.getIptcTag(exifData, 'dateCreated') || new Date('01/01/2010')
     fields.location = EXIF.getIptcTag(exifData, 'caption') || ''

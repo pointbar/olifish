@@ -7,8 +7,8 @@ const getFileNames = () =>
     Array.from(Array(IMGS_COUNT).keys()).map(
         img => {
             return {
-                img: `img/img-${img+1}.jpg`,
-                thumbnail: `img/thumb-${img+1}.jpg`
+                img: `${URL}img-${img+1}.jpg`,
+                thumbnail: `${URL}thumb-${img+1}.jpg`
             }
         }
     )

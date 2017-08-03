@@ -23,12 +23,11 @@ const displayImgs = (imgsSelect) => {
     const tpl = document.querySelector('#img')
     area.innerHTML = ''
     imgsSelect.map(item => {
-        let url = 'https://raw.githubusercontent.com/olivier-colli/olifish-tofs/master/'
         let a = tpl.content.querySelector('a')
-        a.href = url + item.fileName.img
+        a.href = URL + item.fileName.img
         a.setAttribute('data-caption', `${item.Fr} - <i>${item.Lat}</i>`)
         let img = tpl.content.querySelector('img')
-        img.src = url + item.fileName.thumbnail
+        img.src = URL + item.fileName.thumbnail
         img.title = item.model
         let pLatin = tpl.content.querySelector('p.latin')
         let pFr = tpl.content.querySelector('p.nom')

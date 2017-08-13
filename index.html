@@ -2,7 +2,6 @@
 <script src=data.js></script>
 <script src=db.js></script>
 <script src=html.js></script>
-<script src=metaDb.js></script>
 
 <script src=modules/jquery/dist/jquery.min.js></script>
 <script src=modules/exif-js/exif.js></script>
@@ -50,6 +49,11 @@
 </template>
 
 <script>
-    // readAndSaveImgsMetas(getFileNames())
-    ImgsDb.data = DATA
+    const ImgsDb = new Db()
+    ImgsDb.data = []
+    fetch(`${URL}data.json`).then(
+        response => response.json()
+    ).then(json => {
+        ImgsDb.data = json
+    })
 </script>

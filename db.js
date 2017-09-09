@@ -8,11 +8,11 @@ const Db = class {
             return this.data
         }
         return this.data.filter(item => {
-            return this._slugify(JSON.stringify(item)).indexOf(this._slugify(query)) !== -1
+            return this.slugify(JSON.stringify(item)).indexOf(this.slugify(query)) !== -1
         })
     }
 
-    _slugify(text) {
+    slugify(text) {
         const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
         const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
         const p = new RegExp(a.split('').join('|'), 'g')

@@ -5,14 +5,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     form.onsubmit = event => {
         event.preventDefault()
         const query = document.querySelector('input').value
-        location.hash = query
+        location.hash = ImgsDb.slugify(query)
     }
 
     Array.from(aGaleries).map(a =>
         a.onclick = event => {
             event.preventDefault()
             const query = event.target.innerText
-            location.hash = query
+            location.hash = ImgsDb.slugify(query)
         }
     )
 })

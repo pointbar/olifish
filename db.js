@@ -12,18 +12,6 @@ const Db = class {
         })
     }
 
-    insert(meta) {
-        if (this._isObjEmpty(meta)) {
-            throw 'Try to insert empty record'
-        } else {
-            return this.data.push(meta)
-        }
-    }
-
-    _isObjEmpty(obj) {
-        return Object.keys(obj).length === 0 && obj.constructor === Object
-    }
-
     _slugify(text) {
         const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
         const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'

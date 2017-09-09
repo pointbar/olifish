@@ -2,21 +2,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const form = document.querySelector('form')
     const aGaleries = document.querySelectorAll('a.gallery')
 
-    form.onsubmit = (event) => {
+    form.onsubmit = event => {
         event.preventDefault()
         const query = document.querySelector('input').value
-        const imgsSelect = ImgsDb.find(query)
-        displayImgs(imgsSelect)
+        location.hash = query
     }
 
     Array.from(aGaleries).map(a =>
-        a.onclick = (event) => {
+        a.onclick = event => {
+            event.preventDefault()
             const query = event.target.innerText
-            const imgsSelect = ImgsDb.find(query)
-            displayImgs(imgsSelect)
+            location.hash = query
         }
     )
 })
+
+window.onhashchange = () => {
+    const query = location.hash
+    if (query) {
+        const imgsSelect = ImgsDb.find(query)
+        displayImgs(imgsSelect)
+    }
+}
 
 const displayImgs = (imgsSelect) => {
     const area = document.querySelector('.imgs')

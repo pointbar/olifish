@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     )
 })
 
-window.onhashchange = () => {
+document.onhashchange = () => {
     const query = location.hash
     if (query) {
         const imgsSelect = ImgsDb.find(query)
